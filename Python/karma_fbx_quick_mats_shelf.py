@@ -158,6 +158,8 @@ def karma_material_builder(target_node, mat_name):
 
     surface_preview = karma_subnet.createNode("mtlxsurface_unlit", "surface_preview")
     surface_preview.setPosition(suboutput_node.position() + hou.Vector2(0,3))
+    
+    return karma_subnet
 
 # example call
 # karma_material_builder("test_name")
@@ -189,17 +191,17 @@ for mat in mat_list:
 
 matnet.layoutChildren()
 
-# material_node = parent.createNode("material", node_name=str(target_node)+"_mats")
-# material_node.setInput(0, target_node)
-# material_node.setParms({"num_materials":len(new_mats)})
-# material_node.moveToGoodPosition(relative_to_inputs=True)
+material_node = parent.createNode("material", node_name=str(target_node)+"_mats")
+material_node.setInput(0, target_node)
+material_node.setParms({"num_materials":len(new_mats)})
+material_node.moveToGoodPosition(relative_to_inputs=True)
 
-# for count, mat in enumerate(new_mats):
-#     mat_parm_name = "shop_materialpath"+str(count+1)
-#     group_parm_name = "group"+str(count+1)
-#     group_val = "@shop_materialpath=\""+str(mat_list[count])+"\""
-#     material_node.setParms({mat_parm_name:mat.path()})
-#     material_node.setParms({group_parm_name:group_val})
+for count, mat in enumerate(new_mats):
+    mat_parm_name = "shop_materialpath"+str(count+1)
+    group_parm_name = "group"+str(count+1)
+    group_val = "@shop_materialpath=\""+str(mat_list[count])+"\""
+    material_node.setParms({mat_parm_name:mat.path()})
+    material_node.setParms({group_parm_name:group_val})
 
-# material_node.setDisplayFlag(True)
-# material_node.setRenderFlag(True)
+material_node.setDisplayFlag(True)
+material_node.setRenderFlag(True)
