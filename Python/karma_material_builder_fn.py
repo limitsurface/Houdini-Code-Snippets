@@ -133,8 +133,7 @@ def karma_material_builder(mat_name):
     hou_parm.deleteAllKeyframes()
     hou_parm.set(1)
     hou_parm.setAutoscope(False)
-
-
+    
     karma_subnet.setExpressionLanguage(hou.exprLanguage.Hscript)
     if hasattr(karma_subnet, "syncNodeVersionIfNeeded"):
         karma_subnet.syncNodeVersionIfNeeded("20.0.547")
