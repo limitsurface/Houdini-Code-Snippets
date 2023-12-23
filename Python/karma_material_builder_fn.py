@@ -161,4 +161,5 @@ def karma_material_builder(target_node, mat_name):
     return karma_subnet
 
 # example call
-# karma_material_builder("test_name")
+# target_node = hou.selectedNodes()[0]
+# karma_subnet = karma_material_builder(target_node, "test_name")
