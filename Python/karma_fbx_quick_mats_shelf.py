@@ -161,13 +161,6 @@ def karma_material_builder(target_node, mat_name):
     
     return karma_subnet
 
-# example call
-# karma_material_builder("test_name")
-
-
-# majority of code generated using:
-# https://github.com/NCCA/ScriptingForDCC/blob/master/houAsCode.py
-
 
 import numpy as np
 
