@@ -160,39 +160,7 @@ def karma_material_builder(target_node, mat_name):
     
     return karma_subnet
 
-import numpy as np
-
-target_node = hou.selectedNodes()[0]
-parent = target_node.parent()
-geo = target_node.geometry()
-mat_list = geo.findPrimAttrib("shop_materialpath").strings()
-matnet = parent.createNode("matnet", node_name=str(target_node)+"_matnet")
-
-pos = target_node.position()
-matnet.setPosition(pos + hou.Vector2(3,0))
-
-new_mats = []
-for mat in mat_list:
-    clean_name = "".join(ch for ch in str(mat) if ch.isalnum())
-    new_mat = karma_material_builder(matnet, clean_name)
-    new_mats.append(new_mat)
-    karma_surface_node = new_mat.children()[2]
-    karma_surface_node.setParms({"base_color":np.clip(np.random.rand(3), 0.05, 0.7)})
-    karma_surface_node.setParms({"specular_roughness":np.clip(np.random.rand(1)[0], 0.1, 0.7)})
-
-matnet.layoutChildren()
-
-material_node = parent.createNode("material", node_name=str(target_node)+"_mats")
-material_node.setInput(0, target_node)
-material_node.setParms({"num_materials":len(new_mats)})
-material_node.moveToGoodPosition(relative_to_inputs=True)
-
-for count, mat in enumerate(new_mats):
-    mat_parm_name = "shop_materialpath"+str(count+1)
-    group_parm_name = "group"+str(count+1)
-    group_val = "@shop_materialpath=\""+str(mat_list[count])+"\""
-    material_node.setParms({mat_parm_name:mat.path()})
-    material_node.setParms({group_parm_name:group_val})
-
-material_node.setDisplayFlag(True)
-material_node.setRenderFlag(True)
+# example call
+# matnet = hou.selectedNodes()[0]
+# matnet_name = "material_network"
+# new_mat = karma_material_builder(matnet, clean_name)
