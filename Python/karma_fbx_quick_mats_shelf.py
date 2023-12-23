@@ -1,7 +1,5 @@
 def karma_material_builder(target_node, mat_name):
-    # target_node = hou.selectedNodes()[0]
-
-    # Code for /obj/geo1/matnet1/karmamaterial
+    # Code for karmamaterial
     karma_subnet = target_node.createNode("subnet", mat_name, run_init_scripts=False, load_contents=True, exact_type_name=True)
     karma_subnet.setDebugFlag(False)
     karma_subnet.setDetailLowFlag(False)
@@ -44,27 +42,27 @@ def karma_material_builder(target_node, mat_name):
     hou_parm_template_group.append(hou_parm_template)
     karma_subnet.setParmTemplateGroup(hou_parm_template_group)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/folder1 parm 
+    # Code for karmamaterial/folder1 parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("folder1")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set(0)
     hou_parm.setAutoscope(False)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/inherit_ctrl parm 
+    # Code for karmamaterial/inherit_ctrl parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("inherit_ctrl")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set(2)
     hou_parm.setAutoscope(False)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/shader_referencetype parm 
+    # Code for karmamaterial/shader_referencetype parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("shader_referencetype")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
@@ -97,43 +95,42 @@ def karma_material_builder(target_node, mat_name):
     hou_keyframe.setExpression("n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r", hou.exprLanguage.Python)
     hou_parm.setKeyframe(hou_keyframe)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/shader_baseprimpath parm 
+    # Code for karmamaterial/shader_baseprimpath parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("shader_baseprimpath")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set("/__class_mtl__/`$OS`")
     hou_parm.setAutoscope(False)
 
-
-    # Code for /obj/geo1/matnet1/karmamaterial/tabmenumask parm 
+    # Code for karmamaterial/tabmenumask parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("tabmenumask")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set("karma USD ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput")
     hou_parm.setAutoscope(False)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/shader_rendercontextname parm 
+    # Code for karmamaterial/shader_rendercontextname parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("shader_rendercontextname")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set("kma")
     hou_parm.setAutoscope(False)
 
-    # Code for /obj/geo1/matnet1/karmamaterial/shader_forcechildren parm 
+    # Code for karmamaterial/shader_forcechildren parm 
     if locals().get("karma_subnet") is None:
-        karma_subnet = hou.node("/obj/geo1/matnet1/karmamaterial")
+        karma_subnet = hou.node("karmamaterial")
     hou_parm = karma_subnet.parm("shader_forcechildren")
     hou_parm.lock(False)
     hou_parm.deleteAllKeyframes()
     hou_parm.set(1)
     hou_parm.setAutoscope(False)
-    
+
     karma_subnet.setExpressionLanguage(hou.exprLanguage.Hscript)
     if hasattr(karma_subnet, "syncNodeVersionIfNeeded"):
         karma_subnet.syncNodeVersionIfNeeded("20.0.547")
@@ -143,7 +140,6 @@ def karma_material_builder(target_node, mat_name):
     surface_node = karma_subnet.createNode("mtlxstandard_surface", mat_name+"_surface")
     displacement_node = karma_subnet.createNode("mtlxdisplacement", mat_name+"_displacement")
     properties_node = karma_subnet.createNode("kma_material_properties", mat_name+"_properties")
-
 
     suboutput_node.setInput(0, surface_node)
     suboutput_node.setInput(1, displacement_node)
@@ -160,7 +156,6 @@ def karma_material_builder(target_node, mat_name):
     surface_preview.setPosition(suboutput_node.position() + hou.Vector2(0,3))
     
     return karma_subnet
-
 
 import numpy as np
 
