@@ -8,6 +8,7 @@ def karma_material_builder(target_node, mat_name):
     karma_subnet.bypass(False)
     karma_subnet.setCompressFlag(True)
     karma_subnet.hide(False)
+    karma_subnet.setMaterialFlag(True)
 
     hou_parm_template_group = hou.ParmTemplateGroup()
     # Code for parameter template
