@@ -11,7 +11,7 @@ y_pos = 0
 for target_node in target_nodes:
     target_node.setNamedInput("texcoord",xform_node,0)
     x_pos += target_node.position()[0]
-    y_pos += target_node.position()[0]
+    y_pos += target_node.position()[1]
 
 x_pos /= len(target_nodes)
 y_pos /= len(target_nodes)
@@ -19,4 +19,4 @@ x_pos -= 5
 new_pos = hou.Vector2(x_pos,y_pos)
 
 xform_node.setPosition(new_pos)
-uv_node.setPosition(new_pos - hou.Vector2(-3,0))
+uv_node.setPosition(new_pos - hou.Vector2(3,0))
