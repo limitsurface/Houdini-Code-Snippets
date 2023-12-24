@@ -1,1 +1,1 @@
-bits of useful(?) code for houdini things
+bits of code for houdini
