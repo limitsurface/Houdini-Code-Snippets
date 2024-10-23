@@ -79,24 +79,6 @@ def karma_material_builder(target_node, mat_name):
     hou_keyframe.setExpression("n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r", hou.exprLanguage.Python)
     hou_parm.setKeyframe(hou_keyframe)
 
-    # Code for last keyframe.
-    # Code for keyframe.
-    hou_keyframe = hou.StringKeyframe()
-    hou_keyframe.setTime(0)
-    hou_keyframe.setExpression("n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r", hou.exprLanguage.Python)
-    hou_parm.setKeyframe(hou_keyframe)
-
-    # Code for keyframe.
-    hou_keyframe = hou.StringKeyframe()
-    hou_keyframe.setTime(0)
-    hou_keyframe.setExpression("n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r", hou.exprLanguage.Python)
-    hou_parm.setKeyframe(hou_keyframe)
-
-    # Code for keyframe.
-    hou_keyframe = hou.StringKeyframe()
-    hou_keyframe.setTime(0)
-    hou_keyframe.setExpression("n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r", hou.exprLanguage.Python)
-    hou_parm.setKeyframe(hou_keyframe)
 
     # Code for /obj/geo1/matnet1/karmamaterial/shader_baseprimpath parm 
     if locals().get("karma_subnet") is None:
