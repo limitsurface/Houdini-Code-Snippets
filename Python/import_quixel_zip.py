@@ -146,7 +146,7 @@ def karma_material_builder(target_node, mat_name):
     return karma_subnet
 
 def select_zip_file():
-    # Open a file dialog to select the zip file
+    # Open a file dialog to Select the zip file
     file_dialog = QFileDialog()
     file_dialog.setFileMode(QFileDialog.ExistingFile)
     file_dialog.setNameFilter("Zip Files (*.zip)")
