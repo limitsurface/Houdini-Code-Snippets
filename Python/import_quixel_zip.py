@@ -11,6 +11,7 @@ from PySide2 import QtWidgets
 from PySide2.QtWidgets import QFileDialog
 
 def karma_material_builder(target_node, mat_name):
+    # this is a mess, clean it up... eventually
     # Code for karmamaterial
     karma_subnet = target_node.createNode("subnet", mat_name, run_init_scripts=False, load_contents=True, exact_type_name=True)
     karma_subnet.setDebugFlag(False)
